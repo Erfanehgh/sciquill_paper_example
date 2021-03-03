@@ -10,7 +10,7 @@ on:
       target:
         description: 'Make target to build'
         required: true
-        default: 'manuscript'
+        default: 'default'
 
 jobs:
   update:
@@ -28,7 +28,7 @@ jobs:
     - name: Build sciquill PDF
       uses: ./sciquill/actions/sciquill-build-action
       with:
-        command: make
+        command: make ${{ inputs.target }}
         outputs: output/manuscript.pdf output/refs.bib fig/*
         bibtexdb: output/refs.bib
     - name: Push changes
