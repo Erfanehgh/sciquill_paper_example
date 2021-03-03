@@ -1,4 +1,4 @@
-name: Build Sciquill PDF
+name: Sciquill Build
 # This workflow is triggered on changes to source, or on a manual dispatch.
 on:
   push:
