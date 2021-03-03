@@ -6,7 +6,11 @@ on:
     #   - src/*.md
     #   - fig/*.svg
   workflow_dispatch:
-    inputs: null
+    inputs: 
+      target:
+        description: 'Make target to build'
+        required: true
+        default: 'manuscript'
 
 jobs:
   update:
