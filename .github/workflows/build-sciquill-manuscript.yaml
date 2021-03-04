@@ -1,4 +1,4 @@
-name: Sciquill Build - manuscript
+name: Sciquill Build
 # This workflow is triggered on changes to source, or on a manual dispatch.
 on:
   push:
@@ -9,13 +9,13 @@ on:
     inputs: 
       target:
         description: 'Make target to build'
-        required: false
-        default: ''
+        required: true
+        default: 'default'
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    name: Build PDF
+    name: Build manuscript PDF
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -29,9 +29,8 @@ jobs:
       uses: ./sciquill/actions/sciquill-build-action
       with:
         command: make ${{ github.event.inputs.target }}
-        outputs: output/manuscript.pdf output/refs.bib fig/*
+        outputs: output/* fig/*
         bibtexdb: output/refs.bib
-        ghcr_auth: ${{ secrets.CR_PAT }}
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
