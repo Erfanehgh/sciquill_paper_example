@@ -10,7 +10,7 @@ on:
       target:
         description: 'Make target to build'
         required: true
-        default: 'default'
+        default: ''
 
 jobs:
   update:
@@ -31,6 +31,7 @@ jobs:
         command: make ${{ github.event.inputs.target }}
         outputs: output/manuscript.pdf output/refs.bib fig/*
         bibtexdb: output/refs.bib
+        auth: ${{ secrets.CR_PAT }}
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
