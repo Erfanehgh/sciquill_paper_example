@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - src/response*.md
+      - fig/*.svg
   workflow_dispatch:
     inputs: 
       target:
@@ -28,9 +29,8 @@ jobs:
       uses: ./sciquill/actions/sciquill-build-action
       with:
         command: make ${{ github.event.inputs.target }}
-        outputs: output/manuscript.pdf output/refs.bib fig/*
+        outputs: output/* fig/*
         bibtexdb: output/refs.bib
-        auth: ${{ secrets.CR_PAT }}        
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:

@@ -31,7 +31,6 @@ jobs:
         command: make ${{ github.event.inputs.target }}
         outputs: output/* fig/*
         bibtexdb: output/refs.bib
-        ghcr_auth: ${{ secrets.CR_PAT }}
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
