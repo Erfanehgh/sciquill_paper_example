@@ -3,14 +3,13 @@ name: Sciquill Build
 on:
   push:
     paths:
-      - src/*manuscript*.md
-      - fig/*.svg
+      - src/cover_letter*.md
   workflow_dispatch:
     inputs: 
       target:
         description: 'Make target to build'
         required: true
-        default: 'default'
+        default: 'cover_letter'
 
 jobs:
   update:
