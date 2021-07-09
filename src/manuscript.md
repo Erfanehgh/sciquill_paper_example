@@ -1,10 +1,11 @@
 ---
 title: "Example article title"
 short_title: "Short title"
-year: 2019
-notes-after-punctuation: false
+fontsize: 12pt
+year: 2021
 class: Research Article
 section: Genome Analysis
+mark_changes: true
 author:
 - name: Nathan C. Sheffield
   affiliation: "1,2,3,4"
@@ -30,7 +31,15 @@ abstract: |
 # Citations
 
 Cite papers using brackets and `bibtex` keys. Example citation:
-`[@Sheffield2016]` will be rendered like this [@Sheffield2016]. Use semicolons to separate multiple citations [@Sheffield2016; @Sheffield2018].
+`[@Sheffield2016]` will be rendered like this [@Sheffield2016]. Use semicolons to separate multiple citations [@Sheffield2016; @Sheffield2018]. In line citations use the same syntax, without brackets, like `@Sheffield2016`; they are rendered like this: @Sheffield2016 reported blah blah blah.
+
+
+@Sheffield2016 [55] says blah.
+
+# Highlights
+
+
+Duis in [tempor mauris]{.changed}, a lobortis nisl.
 
 # Figures
 
@@ -43,16 +52,16 @@ this: `\ref{abstract}` (See Fig. \ref{abstract}).  Wrap a figure using the
 
 ![\label{wrapped}Fig. \ref{wrapped}: Example wrapped figure](fig/pdf/example_figure.pdf){wrap=44mm}
 
-Duis in tempor mauris, a lobortis nisl. Integer arcu lorem, vehicula sed ante
+[Duis in tempor mauris, a lobortis nisl. Integer arcu lorem, vehicula sed ante
 commodo, maximus eleifend nisi. Aenean efficitur molestie lorem, ac pharetra
 felis euismod nec. Duis vitae ligula facilisis, dignissim justo eget, elementum
 est. Nulla quis mi a justo porta pellentesque eget sit amet purus. Ut ac
 vestibulum ante, in efficitur massa. Cras feugiat in urna facilisis ultrices.
 Nullam vestibulum, lacus eget pretium pharetra, augue ligula consectetur diam,
-eget condimentum ipsum magna sed augue.
+eget condimentum ipsum magna sed augue.]{.changed}
 
 
-![\label{fig3}Fig. \ref{fig3}: Example double-column figure](fig/pdf/example_figure.pdf){fullwidth=t}
+![\label{fig3}Fig. \ref{fig3}: [Example double-column]{.changed} figure](fig/pdf/example_figure.pdf){fullwidth=t}
 
 
 Vivamus eu rhoncus neque.
@@ -134,7 +143,7 @@ You can do a two-column table using the `\begin{table*}` environment. See Table 
 
 ## Markdown tables
 
-You can use markdown tables, too...sort of. Pandoc renders markdown tables with the `longtable` package. But longtable is not compatible with a two-column template. So, there are a few hacks and workarounds, but nothing works really well. The best thing I have found works *sometimes* -- but then occasionally it just gobbles up text and figures silently. So, I suggest using latex templates until this issue is solved:
+You can use markdown tables, too...sort of. Pandoc renders markdown tables with the `longtable` package. But longtable is not compatible with a two-column template. So, there are a few hacks and workarounds, but nothing works really well. The best thing I have found works *sometimes* -- but then occasionally it just gobbles up text and figures silently. So, I suggest using latex tables until this issue is solved:
 
 https://github.com/jgm/pandoc/issues/1023
 
@@ -159,7 +168,11 @@ Unfortunately, I can't figure out how to put the caption below the table (it's a
 Table: Table \label{param_table}\ref{param_table}: **Compatibility flags**. A list of flags for compatibility testing functions.
  -->
 
+Finally, another issue is that longtable doesn't play nicely with floats, due to a bug:
 
+https://github.com/jgm/pandoc/issues/5557
+
+There's a patch...and I patched the sciquill docker image and it works for one-column docs at least.
 
 
 ## Lorem ipsum
@@ -254,5 +267,6 @@ Mauris a orci vehicula, aliquam orci in, cursus eros. Lorem ipsum dolor sit amet
 
 Nam aliquam ex non accumsan efficitur. Nullam vehicula lorem vitae porttitor pellentesque. Fusce a tristique mi, sed congue velit. Nullam at ornare quam. Proin hendrerit accumsan ipsum, sed viverra velit vehicula sit amet. Donec non lectus diam. Sed condimentum non velit vel suscipit. Sed odio ex, vestibulum ullamcorper odio sit amet, lobortis accumsan risus. Nulla facilisi. Mauris eleifend viverra metus, ac varius lacus scelerisque non. 
 
+# References
 
 <div id="refs"></div>
