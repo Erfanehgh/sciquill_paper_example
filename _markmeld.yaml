@@ -13,7 +13,7 @@ targets:
     data_variables:
       include_supplement: True
     data_md:
-      manuscript: src/manuscript.md
+      manuscript: https://demo.hedgedoc.org/lHOpwKMETQymjWiO1nOAbg/download
       supplement: Null     
     prebuild: 
       - figs
