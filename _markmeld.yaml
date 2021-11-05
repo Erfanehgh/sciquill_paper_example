@@ -27,8 +27,7 @@ command: |
     --bibliography {bibdb} \
     --lua-filter {figczar} \
     --lua-filter {highlighter} \
-    --lua-filter /home/nsheff/code/sciquill/pandoc_filters/multi-refs/multi-refs.lua \
-    --lua-filter /home/nsheff/code/sciquill/pandoc_filters/supplemental-labels/supplemental_labels.lua \
+    --lua-filter {multirefs} \
     --csl {csl} \
     --citeproc \
     -o {output_file}
