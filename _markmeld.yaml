@@ -7,6 +7,7 @@ multirefs: ./sciquill/pandoc_filters/multi-refs/multi-refs.lua
 csl: ./sciquill/csl/biomed-central.csl
 targets:
   manuscript:
+    stopopen: true
     latex_template: sciquill/tex_templates/shefflab.tex
     md_template: manuscript/manuscript_supplement.jinja
     output_file: "output/manuscript_{today}.pdf"
@@ -20,7 +21,7 @@ targets:
   figs:
     type: raw
     command: |
-      ./sciquill/bin/build-pdfs {figfolder}
+      sciquill/bin/build-pdfs {figfolder}
 command: |
   pandoc \
     --template {latex_template} \
