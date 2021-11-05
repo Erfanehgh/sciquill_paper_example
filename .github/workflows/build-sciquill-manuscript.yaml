@@ -1,16 +1,12 @@
 name: Sciquill Build - manuscript
 # This workflow is triggered on changes to source, or on a manual dispatch.
 on:
-  push:
-    paths:
-      - src/*manuscript*.md
-      - fig/*.svg
   workflow_dispatch:
     inputs: 
       target:
         description: 'Make target to build'
         required: false
-        default: ''
+        default: 'manuscript'
 
 jobs:
   update:
@@ -28,7 +24,7 @@ jobs:
     - name: Build sciquill PDF
       uses: ./sciquill/actions/sciquill-build-action
       with:
-        command: make ${{ github.event.inputs.target }}
+        command: mm ${{ github.event.inputs.target }}
         outputs: output/* fig/*
         bibtexdb: output/refs.bib
     - name: Push changes

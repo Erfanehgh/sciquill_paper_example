@@ -1,0 +1,34 @@
+mm_templates: http://databio.org/mm_templates/
+figfolder: fig
+bibdb: output/refs.bib
+figczar: sciquill/pandoc_filters/figczar/figczar.lua
+highlighter: sciquill/pandoc_filters/change_marker/change_marker.lua
+multirefs: /home/nsheff/code/sciquill/pandoc_filters/multi-refs/multi-refs.lua
+csl: sciquill/csl/biomed-central.csl
+targets:
+  manuscript:
+    latex_template: sciquill/tex_templates/shefflab.tex
+    md_template: manuscript/manuscript_supplement.jinja
+    output_file: "output/manuscript_{today}.pdf"
+    data_variables:
+      include_supplement: True
+    data_md:
+      manuscript: src/manuscript.md
+      supplement: Null     
+    prebuild: 
+      - figs
+  figs:
+    type: raw
+    command: |
+      sciquill/bin/build-pdfs {figfolder}
+command: |
+  pandoc \
+    --template {latex_template} \
+    --bibliography {bibdb} \
+    --lua-filter {figczar} \
+    --lua-filter {highlighter} \
+    --lua-filter /home/nsheff/code/sciquill/pandoc_filters/multi-refs/multi-refs.lua \
+    --lua-filter /home/nsheff/code/sciquill/pandoc_filters/supplemental-labels/supplemental_labels.lua \
+    --csl {csl} \
+    --citeproc \
+    -o {output_file}
