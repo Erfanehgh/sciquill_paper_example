@@ -1,10 +1,10 @@
 mm_templates: http://databio.org/mm_templates/
 figfolder: fig
 bibdb: output/refs.bib
-figczar: sciquill/pandoc_filters/figczar/figczar.lua
-highlighter: sciquill/pandoc_filters/change_marker/change_marker.lua
-multirefs: /home/nsheff/code/sciquill/pandoc_filters/multi-refs/multi-refs.lua
-csl: sciquill/csl/biomed-central.csl
+figczar: sciquill/sciquill/pandoc_filters/figczar/figczar.lua
+highlighter: sciquill/sciquill/pandoc_filters/change_marker/change_marker.lua
+multirefs: sciquill/sciquill/pandoc_filters/multi-refs/multi-refs.lua
+csl: sciquill/sciquill/csl/biomed-central.csl
 targets:
   manuscript:
     latex_template: sciquill/tex_templates/shefflab.tex
@@ -20,7 +20,7 @@ targets:
   figs:
     type: raw
     command: |
-      sciquill/bin/build-pdfs {figfolder}
+      sciquill/sciquill/bin/build-pdfs {figfolder}
 command: |
   pandoc \
     --template {latex_template} \
