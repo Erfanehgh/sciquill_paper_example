@@ -14,7 +14,7 @@ targets:
     data_variables:
       include_supplement: True
     data_md:
-      manuscript: https://demo.hedgedoc.org/lHOpwKMETQymjWiO1nOAbg/download
+      manuscript: https://demo.hedgedoc.org/6JZzBBYfRMqk1OCCuR8UrQ
       supplement: Null     
     prebuild: 
       - figs
